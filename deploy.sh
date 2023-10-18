@@ -14,6 +14,6 @@ git add -A
 git commit -m 'deploy'
 
 # если вы публикуете по адресу https://<USERNAME>.github.io
-git push -f git@github.com:boytrend0108/boytrend0108.github.io.git master
+git push -f git@github.com:boytrend0108/boytrend0108.github.io.git main
 
 cd -
