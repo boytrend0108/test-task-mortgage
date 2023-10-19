@@ -1,9 +1,103 @@
+
+import MyButton from '../UI/MyButton.vue';
 <template>
   <div class="display">
     <div class="display__box">
-      
+      <p class="display__subtitle">Узнайте о других интересных предложениях</p>
+      <h3 class="display__title">Ипотека 0.1%</h3>
+      <div class="display__options">
+        <div class="display__item">
+          <p class="display__item-title">Ежемесячный платёж</p>
+          <p class="display__item-value">12 591 ₽</p>
+        </div>
+        <div class="display__item">
+          <p class="display__item-title">Ставка</p>
+          <p class="display__item-value">0.1%</p>
+        </div>
+        <div class="display__item">
+          <p class="display__item-title">Сумма кредита</p>
+          <p class="display__item-value">4 465 050 ₽</p>
+        </div>
+        <div class="display__item">
+          <p class="display__item-title">Срок кредита</p>
+          <p class="display__item-value">5 лет</p>
+        </div>
+      </div>
+
     </div>
-    <p class="display__text"></p>
-    <button class="display__bnt">Подать заявку на точный расчёт</button>
+    <p class="display__text">
+      Приведенные расчеты носят предварительный характер. Окончательный расчет суммы кредита и размер ежемесячного платежа производится банком после предоставления оценки платежеспособности клиента.
+    </p>
+    <MyButton theme="dark" class="display__btn">Подать заявку на точный расчёт</MyButton>
   </div>
 </template>
+
+<script setup>
+import MyButton from '../UI/MyButton.vue';
+</script>
+
+<style scoped lang="scss">
+  .display {
+
+    &__box {
+      background-image: url(../../assets/images/display/display-bg.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      padding: 60px 40px;
+      border-radius: 50px;
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    &__subtitle {
+      color: $color-main;
+      font-size: 14px;
+      line-height: 100%;
+      width: fit-content;
+      position: absolute;
+      top: 14px;
+      right: 5px;
+    }
+
+    &__title {
+      color: $color-main;
+      font-size: 74px;
+      line-height: 110%;
+      background-color: $color-bg;
+      padding: 15px;
+      width: fit-content;
+      border-radius: 16px;
+      margin-bottom: 50px;
+    }
+
+    &__options {
+      display: flex;
+      gap: 70px;
+    }
+
+    &__item-title {
+      color:rgba(255, 255, 255, 0.70);
+      font-size: 14px;
+      line-height: 100%;
+      margin-bottom: 14px;
+    }
+
+    &__item-value {
+      color: $color-bg;
+      font-size: 30px;
+      line-height: 120%;
+    }
+
+    &__text {
+      margin-bottom: 40px;
+      color:#778478;
+      font-size: 14px;
+      line-height: 140%;
+    }
+
+    &__btn {
+      color: $color-bg;
+    }
+  }
+</style>
