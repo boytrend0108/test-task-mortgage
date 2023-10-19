@@ -25,13 +25,12 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-import MyButton from '../UI/MyButton.vue';
+  import { computed } from 'vue';
+  import { useStore } from 'vuex';
+  import MyButton from '../UI/MyButton.vue';
 
-const store = useStore();
-const items = computed(() => store.state.variables.items);
-
+  const store = useStore();
+  const items = computed(() => store.state.variables.items);
 </script>
 
 <style scoped lang="scss">
@@ -93,8 +92,8 @@ const items = computed(() => store.state.variables.items);
      
       &__btn {
         position: absolute;
-        bottom: 6px;
-        right: 6px;
+        bottom: 9px;
+        right: 9px;
         z-index: 2;
         transform: scale(1);
 

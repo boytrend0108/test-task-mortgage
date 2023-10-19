@@ -19,6 +19,18 @@
         @input="showStartPrice"
         ref="startRange"
       >
+
+      <input 
+        type="range" 
+        class="range__track range__track--right"
+        name="end"
+        min="2.8"
+        max="5.6"
+        step="0.1"
+        v-model="maxPrice"
+        @input="showMaxPrice"
+        ref="maxRange"
+      >
     </div>
   </div>
 </template>
@@ -29,7 +41,9 @@ const props = defineProps({title: String})
 
 const rangeTitle = props.title
 const startPrice = ref(0)
+const maxPrice = ref(5.6)
 const startRange = ref(null)
+const maxRange = ref(null)
 
 const showStartPrice = () => {
   const el = startRange.value
@@ -37,11 +51,19 @@ const showStartPrice = () => {
   startRange.value.style.setProperty('--hover-width', (rangeWidth * startPrice.value / 2.8) + 'px')
 }
 
+const showMaxPrice = () => {
+  const el = maxRange.value
+  const rangeWidth = window.getComputedStyle(el).width.split('px')[0]
+  let hoverWidth = (rangeWidth * 2) - (rangeWidth * maxPrice.value / 2.8) + 'px'
+  maxRange.value.style.setProperty('--hover-width', hoverWidth )
+}
+
 </script>
 
 <style  lang="scss" scoped>
 
 .range {
+  @include range;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -57,6 +79,22 @@ const showStartPrice = () => {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    cursor: pointer;
+    outline: 2px solid transparent;
+    box-sizing: border-box;
+
+    &::after {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background-color: $color-title-primary;
+      position: absolute;
+      top: 50%;
+      left: 45%;
+      transform: rotate(90deg);
+    }
+
+    @include hover(outline-color, $color-main);
   }
 
   &__double {

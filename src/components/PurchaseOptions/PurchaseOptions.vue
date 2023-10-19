@@ -3,9 +3,9 @@
     <header class="purchase__header">
       <h2 class="purchase__title">Варианты покупки</h2>
       <div class="purchase__btnbox">
-        <MyButton>Подробнее</MyButton>
+        <MyButton class="purchase__btn">Подробнее</MyButton>
         <MyButton direction="left" class="purchase__left"/>
-        <MyButton direction="right"/>
+        <MyButton direction="right" class="purchase__btn"/>
       </div>
     </header>
   </div>
@@ -38,6 +38,20 @@ import MyButton from '../UI/MyButton.vue';
     &__left {
       margin-right: 12px;
       margin-left: 20px;
+
+      transition: all ease-in $transition-duration;
+      &:hover {
+        background-color: $color-main;
+        color: $color-bg
+      }
+    }
+
+    &__btn {
+      transition: all ease-in $transition-duration;
+      &:hover {
+        background-color: $color-main;
+        color: $color-bg
+      }
     }
   }
 </style>

@@ -3,7 +3,9 @@ import MyButton from '../UI/MyButton.vue';
 <template>
   <div class="display">
     <div class="display__box">
-      <p class="display__subtitle">Узнайте о других интересных предложениях</p>
+      <p class="display__subtitle">Узнайте о других 
+        <span class="display__subtitle--link">интересных предложениях</span>
+      </p>
       <h3 class="display__title">Ипотека 0.1%</h3>
       <div class="display__options">
         <div class="display__item">
@@ -44,7 +46,8 @@ import MyButton from '../UI/MyButton.vue';
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      padding: 60px 40px;
+      padding: 60px 40px 37px;
+      box-sizing: border-box;
       border-radius: 50px;
       position: relative;
       margin-bottom: 25px;
@@ -58,6 +61,12 @@ import MyButton from '../UI/MyButton.vue';
       position: absolute;
       top: 14px;
       right: 5px;
+
+      &--link {
+        color: $color-main;
+        @include hover(color, $color-main-hover);
+        cursor: pointer;
+      }
     }
 
     &__title {
@@ -98,6 +107,7 @@ import MyButton from '../UI/MyButton.vue';
 
     &__btn {
       color: $color-bg;
+      @include hover(background-color, $color-main-hover);
     }
   }
 </style>

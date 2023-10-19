@@ -32,15 +32,12 @@
 </template>
 
 <script setup>
-import DoubleRange from './PurchaseOptions/DoubleRange.vue';
-import SingleRange from './PurchaseOptions/SingleRange.vue'
-
+import DoubleRange from './DoubleRange.vue';
+import SingleRange from './SingleRange.vue';
 </script>
 
 <style  lang="scss" scoped>
 .calculator {
-  width: 420px;
-  height: 519px;
   border-radius: 40px;
   border: 1px solid $color-main;
   padding: 40px 35px;
@@ -50,13 +47,19 @@ import SingleRange from './PurchaseOptions/SingleRange.vue'
   gap: 34px;
 
   &__title {
-    color: var(--white, #FFF);
+    color: $color-bg;
     font-size: 14px;
     line-height: 100%;
     border-radius: 10px;
     background: rgba(8, 62, 76, 0.50);
     padding: 10px;
     width: fit-content;
+    transition: all ease-in $transition-duration;
+
+    &:hover {
+      color: $color-bg;
+      background-color: $color-main
+    }
   }
 
   &__type {
@@ -174,6 +177,6 @@ import SingleRange from './PurchaseOptions/SingleRange.vue'
     line-height: 100%;
     cursor: pointer;
   }
-  }
+}
 
 </style>
