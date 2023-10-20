@@ -48,7 +48,7 @@ import MyButton from '../UI/MyButton.vue';
       background-position: center;
       padding: 60px 40px 37px;
       box-sizing: border-box;
-      border-radius: 50px;
+      border-radius: 20px;
       position: relative;
       margin-bottom: 25px;
     }

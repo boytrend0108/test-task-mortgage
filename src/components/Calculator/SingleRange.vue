@@ -59,6 +59,7 @@ const showStartPrice = () => {
     align-items: center;
     position: relative;
     outline: 2px solid transparent;
+    cursor: pointer;
 
     @include hover(outline-color, $color-main);
   }
