@@ -1,11 +1,19 @@
 <template>
   <div class="purchase">
     <header class="purchase__header">
-      <h2 class="purchase__title">Варианты покупки</h2>
+      <h1 class="purchase__title">Варианты покупки</h1>
       <div class="purchase__btnbox">
-        <MyButton class="purchase__btn">Подробнее</MyButton>
-        <MyButton direction="left" class="purchase__left"/>
-        <MyButton direction="right" class="purchase__btn"/>
+        <MyButton class="purchase__btn" aria-label="Подробнее">Подробнее</MyButton>
+        <MyButton 
+          direction="left" 
+          class="purchase__left"
+          aria-label="left"
+        />
+        <MyButton 
+          direction="right" 
+          class="purchase__btn"
+          aria-label="right"
+        />
       </div>
     </header>
   </div>

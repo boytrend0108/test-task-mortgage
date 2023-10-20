@@ -1,6 +1,6 @@
 <template>
   <div class="range">
-    <p class="range__title">{{ rangeTitle }}</p>
+    <label for="doubleRange" class="range__title">{{ rangeTitle }}</label>
 
     <div class="range__fild">
       <p class="range__value">{{ startPrice }}</p>
@@ -10,6 +10,7 @@
     <div class="range__double">
       <input
         type="range"
+        id="doubleRange"
         class="range__track"
         name="start"
         min="0"

@@ -1,9 +1,21 @@
 <template>
   <div class="offers">
      <div class="offer" v-for="(item, i) in items" :key="i">
-        <img src="@/assets/images/offers/offer-mask.png" class="offer__mask">
-        <img src='@/assets/images/offers/shadow-bg.png' class="offer__shadow">
-        <img :src="`/test-task-mortgage/${item.bg}`"  class="offer__content">
+        <img 
+          src="@/assets/images/offers/offer-mask.png" 
+          class="offer__img offer__img--mask"
+          alt="Ипотека от 4,3%"
+        >
+        <img 
+          src='@/assets/images/offers/shadow-bg.png' 
+          class="offer__img offer__img--shadow"
+          alt="Рассрочка 0%"
+        >
+        <img 
+          :src="`/test-task-mortgage/${item.bg}`"  
+          class="offer__img offer__img--content"
+          alt="Покупка в Trade-in"
+        >
 
         <p class="offer__title">{{ item.title }}</p>
 
@@ -15,6 +27,7 @@
           direction="right"
           theme="dark"
           class="offer__btn"
+          aria-label="play"
         />
      </div>
   </div>
@@ -63,26 +76,31 @@
     }
   }
 
-  &__mask {
-    height: 100%;
-    width: 100%;
+  &__img {
+    width: 420px;
+    height: 302px;
     position: absolute;
-    z-index: 1;
+
+    &--mask {
+      width: 420px;
+      height: 302px;
+      z-index: 1;
+    }
+
+    &--shadow {
+      width: 420px;
+      height: 302px;
+      z-index: 2;
+    }
+
+    &--content {
+      width: 420px;
+      height: 302px;
+      transition: transform ease-in $transition-duration;
+    }
   }
 
-  &__shadow {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 2;
-  }
-
-  &__content {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    transition: transform ease-in $transition-duration;
-  }
+  
 
   &__btn {
     position: absolute;

@@ -1,15 +1,16 @@
 <template>
   <div class="range">
-    <p class="range__title">{{ rangeTitle }}</p>
+    <label :for="id" class="range__title">{{ rangeTitle }}</label>
 
     <div class="range__fild">
       <p class="range__value">{{ startPrice }}</p>
-      <p class="range__value">{{ maxPrice }}</p>
+      <p class="range__value"> 30% </p>
     </div>
 
     <div class="range__double">
       <input
         type="range"
+        :id="id"
         class="range__track"
         name="start"
         min="0"
@@ -30,6 +31,7 @@ const props = defineProps({title: String})
 const rangeTitle = props.title
 const startPrice = ref(0)
 const startRange = ref(null)
+const id = Date.now()
 
 const showStartPrice = () => {
   const el = startRange.value

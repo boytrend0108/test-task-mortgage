@@ -1,5 +1,4 @@
 
-import MyButton from '../UI/MyButton.vue';
 <template>
   <div class="display">
     <div class="display__box">
@@ -30,7 +29,13 @@ import MyButton from '../UI/MyButton.vue';
     <p class="display__text">
       Приведенные расчеты носят предварительный характер. Окончательный расчет суммы кредита и размер ежемесячного платежа производится банком после предоставления оценки платежеспособности клиента.
     </p>
-    <MyButton theme="dark" class="display__btn">Подать заявку на точный расчёт</MyButton>
+    <MyButton 
+      theme="dark" 
+      class="display__btn"
+      aria-label="Подать заявку на точный расчёт"
+    >
+      Подать заявку на точный расчёт
+    </MyButton>
   </div>
 </template>
 
@@ -42,7 +47,7 @@ import MyButton from '../UI/MyButton.vue';
   .display {
 
     &__box {
-      background-image: url(../../assets/images/display/display-bg.png);
+      background-image: url(../../assets/images/display/display-bg.webp);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
