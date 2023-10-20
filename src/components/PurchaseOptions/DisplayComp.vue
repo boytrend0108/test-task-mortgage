@@ -42,34 +42,16 @@
 <script setup>
 import { onMounted, ref} from 'vue';
 import MyButton from '../UI/MyButton.vue';
+import scrollAnim from '../../utils/scrollAnim';
 
 const display = ref(null)
-
-const scrollAnim = () => {
-
-const options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.1,
-};
-
-const callback = function (entries) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      display.value.style.transform = 'translateY(0)'
-      display.value.style.opacity = '1'
-    }
-  });
-};
-
-const observer = new IntersectionObserver(callback, options);
-const target = document.querySelector("#display");
-observer.observe(target);
+const anim = () => {
+  display.value.style.transform = 'translateY(0)'
+  display.value.style.opacity = '1'
 }
 
-
 onMounted(() => {
-  scrollAnim()
+  scrollAnim(anim, 'display')
 })
 </script>
 

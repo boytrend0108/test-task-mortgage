@@ -44,38 +44,22 @@
   import { computed, onMounted, ref } from 'vue';
   import { useStore } from 'vuex';
   import MyButton from '../UI/MyButton.vue';
+  import scrollAnim from '../../utils/scrollAnim'
 
   const offer = ref(null)
   const store = useStore();
   const items = computed(() => store.state.variables.items);
 
-  const scrollAnim = () => {
-
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1,
-    };
-
-    const callback = function (entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          offer.value[1].style.transform = 'translateY(0)'
-          offer.value[1].style.opacity = '1'
-          offer.value[2].style.transform = 'translateY(0)'
-          offer.value[2].style.transitionDelay = '0.2s'
-          offer.value[2].style.opacity = '1'
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(callback, options);
-    const target = document.querySelector("#target");
-    observer.observe(target);
+  const anim = () => {
+    offer.value[1].style.transform = 'translateY(0)'
+    offer.value[1].style.opacity = '1'
+    offer.value[2].style.transform = 'translateY(0)'
+    offer.value[2].style.transitionDelay = '0.2s'
+    offer.value[2].style.opacity = '1'
   }
 
   onMounted(() => {
-    scrollAnim()
+    scrollAnim(anim, 'target')
   })
 </script>
 
