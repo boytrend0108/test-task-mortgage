@@ -1,6 +1,13 @@
 <template>
-  <div class="offers">
-     <div class="offer" v-for="(item, i) in items" :key="i">
+  <div class="offers" id="target">
+     <div 
+        class="offer" 
+        :class="`offer--${i}`"
+        v-for="(item, i) in items" 
+        :key="i"
+        :id="`offer_${i}`"
+        ref="offer"
+     >
         <img 
           src="@/assets/images/offers/offer-mask.png" 
           class="offer__img offer__img--mask"
@@ -34,12 +41,42 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue';
+  import { computed, onMounted, ref } from 'vue';
   import { useStore } from 'vuex';
   import MyButton from '../UI/MyButton.vue';
 
+  const offer = ref(null)
   const store = useStore();
   const items = computed(() => store.state.variables.items);
+
+  const scrollAnim = () => {
+
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const callback = function (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          offer.value[1].style.transform = 'translateY(0)'
+          offer.value[1].style.opacity = '1'
+          offer.value[2].style.transform = 'translateY(0)'
+          offer.value[2].style.transitionDelay = '0.2s'
+          offer.value[2].style.opacity = '1'
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+    const target = document.querySelector("#target");
+    observer.observe(target);
+  }
+
+  onMounted(() => {
+    scrollAnim()
+  })
 </script>
 
 <style scoped lang="scss">
@@ -56,6 +93,13 @@
   height: 302px;
   overflow: hidden;
   cursor: pointer;
+
+  &--1,
+  &--2 {
+    transform: translateY(100px);
+    opacity: 0.5;
+    transition: all ease-in-out 0.7s;
+  }
 
   &:hover {
 
@@ -99,8 +143,6 @@
       transition: transform ease-in $transition-duration;
     }
   }
-
-  
 
   &__btn {
     position: absolute;
