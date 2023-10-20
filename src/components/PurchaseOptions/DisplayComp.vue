@@ -1,7 +1,7 @@
 
 <template>
-  <div class="display">
-    <div class="display__box">
+  <div class="display" id="display">
+    <div class="display__box" ref="display">
       <p class="display__subtitle">Узнайте о других 
         <span class="display__subtitle--link">интересных предложениях</span>
       </p>
@@ -40,7 +40,37 @@
 </template>
 
 <script setup>
+import { onMounted, ref} from 'vue';
 import MyButton from '../UI/MyButton.vue';
+
+const display = ref(null)
+
+const scrollAnim = () => {
+
+const options = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.1,
+};
+
+const callback = function (entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      display.value.style.transform = 'translateY(0)'
+      display.value.style.opacity = '1'
+    }
+  });
+};
+
+const observer = new IntersectionObserver(callback, options);
+const target = document.querySelector("#display");
+observer.observe(target);
+}
+
+
+onMounted(() => {
+  scrollAnim()
+})
 </script>
 
 <style scoped lang="scss">
@@ -56,6 +86,9 @@ import MyButton from '../UI/MyButton.vue';
       border-radius: 20px;
       position: relative;
       margin-bottom: 25px;
+      transform: translateY(50px);
+      opacity: 0.5;
+      transition: all ease-in-out 0.7s;
     }
 
     &__subtitle {
